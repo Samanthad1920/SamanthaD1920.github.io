@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samantha D - Portfolio</title>
+    <style>
+        /* :root {
+            --primary-purple: #726da8;
+            --light-lavender: #e2cfea;
+            --accent-pink: #ffcae9;
+            --text-dark: #2d2a3a;
+            --white: #ffffff;
+        } */
+        :root {
+            /* 1. Base Palette Tokens (Your specific color choices) */
+            --tech-blue: #6072b1;      /* Glaucous: Tech anchor */
+            --accent-pop: #edadc7;     /* Blush Pop: High contrast pastel */
+            --slate-dark: #272d3d;     /* Deep slate navy for clean readability */
+            --slate-light: #e2e8f0;    /* Muted structural border gray */
+            --surface-light: #f5f7fa;  /* Off-white canvas backdrop */
+            --white: #ffffff;          /* Crisp card background */
+
+            /* 2. Semantic System Variables (Map to the tokens above) */
+            --primary: var(--tech-blue);       /* Core brand identity (headings, main links) */
+            --accent: var(--accent-pop);       /* Call-to-actions, hovers, highlight states */
+            --dark: var(--slate-dark);         /* Primary text and dark readable elements */
+            --light: var(--slate-light);       /* Borders, dividers, subtle tag backgrounds */
+            --background: var(--surface-light);/* The main viewport page canvas */
+            --surface: var(--white);           /* Floating container blocks (sections, cards) */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);  /* Passes WCAG AA on white and light gray */
+            background: var(--background);
+            min-height: 100vh;
+        }
+        
+        header {
+            background: var(--surface);
+            /* color: var(--white); */
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--light);
+        }
+        
+        header h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+            color: var(--primary); /* Passes WCAG AA for large text (>24px) */
+
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            color: var(--dark);
+            opacity: 0.8; /* Maintains high legibility while establishing hierarchy */
+            font-weight: 400;
+        }
+        
+        nav {
+            background: var(--surface);
+            border-bottom: 1px solid var(--light);
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav a {
+            color: var(--dark); /* High contrast navigation items */
+            margin: 0 1.5rem;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-weight: 600;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            background: var(--surface);
+            margin-bottom: 2.5rem;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+        
+        h2 {
+            color: var(--dark);
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border-bottom: 4px solid var(--primary);
+            border-left: 4px solid var(--tech-blue); /* High-tech visual accent anchor */
+            /* padding-bottom: 0.5rem; */
+            padding-left: 0.75rem;
+        }
+        
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .skill-card {
+            background: var(--background);
+            padding: 1rem;
+            border-radius: 8px;
+            /* border-left: 4px solid var(--primary-purple); */
+            border: 1px solid var(--light);
+            font-weight: 600;
+            color: var(--dark); /* Swapped from brand color to guarantee crisp contrast at standard sizes */
+            text-align: center;
+            transition: background 0.2s;
+            border-bottom: 3px solid var(--accent); /* Subtle use of decorative Blush Pop */
+        }
+        
+        .skill-card:hover {
+            background: var(--light);
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .project-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--light);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.05);
+            border-color: var(--primary);
+        }
+        
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        footer {
+            background: var(--surface);
+            color: var(--dark);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            border-top: 1px solid var(--light);
+        }
+        
+        .social-links {
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--dark);
+            font-weight: 600;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 6px;
+            background: var(--background);
+            transition: all 0.2s ease;
+            border: 1px solid var(--light);
+        }
+
+        .social-links a:hover {
+            color: var(--white);
+            background: var(--primary); /* Solid, high-contrast action response */
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Samantha D</h1>
+        <p>Computer Engineer | AI Integration IT Specialist | Full-Stack Developer</p>
+    </header>
+    
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    
+    <div class="container">
+        <section id="home">
+            <h2>Home</h2>
+            <p>?</p>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I'm a Computer Engineering graduate with a passion for AI integration and building practical solutions. Currently working as an AI Integration IT Specialist, I combine software development with infrastructure expertise to create innovative tech solutions.</p>
+        </section>
+        
+        <section id="skills">
+            <h2>Skills & Expertise</h2>
+            <div class="skills">
+                <div class="skill-card">
+                    <h3>AI & Machine Learning</h3>
+                    <p>AI integration, LLM applications, automation</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Web Development</h3>
+                    <p>GitHub, HTML, CSS, JavaScript, mySQL, T-SQL, Full-stack</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Systems & Networking</h3>
+                    <p>Home networking, Linux, Infrastructure</p>
+                </div>
+                <div class="skill-card">
+                    <h3>IoT & Embedded</h3>
+                    <p>Raspberry Pi, Arduino, Smart devices</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Knowledge Management</h3>
+                    <p>Notion</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <h3>Personal Portfolio Website</h3>
+                    <p>Responsive portfolio showcasing technical skills and projects using modern web technologies.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Home Network Setup</h3>
+                    <p>Custom home networking infrastructure with security, automation, and IoT device management.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Raspberry Pi Projects</h3>
+                    <p>Collection of Raspberry Pi projects including media server, smart home controller, and monitoring systems.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Legacy Web App</h3>
+                    <p>Maintaining a Legacy Web App and adding new features.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="resume">
+            <h2>Resume</h2>
+            <p>my resume</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: </p>
+            <p>Phone:</p>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Samantha DuBois All rights reserved.</p>
+        <div class="social-links">
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Email</a>
+        </div>
+    </footer>
+</body>
+</html>
